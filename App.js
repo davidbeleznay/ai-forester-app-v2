@@ -1,39 +1,57 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
-import HomeScreen from './src/screens/HomeScreen';
-import NewFormScreen from './src/screens/NewFormScreen';
-import SavedFormsScreen from './src/screens/SavedFormsScreen';
-import FormDetailScreen from './src/screens/FormDetailScreen';
-
-const Stack = createNativeStackNavigator();
-
+// Simplified app to test Expo connectivity
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ title: 'AI Forester' }}
-        />
-        <Stack.Screen 
-          name="NewForm" 
-          component={NewFormScreen} 
-          options={{ title: 'New Observation' }}
-        />
-        <Stack.Screen 
-          name="SavedForms" 
-          component={SavedFormsScreen} 
-          options={{ title: 'Saved Observations' }}
-        />
-        <Stack.Screen 
-          name="FormDetail" 
-          component={FormDetailScreen} 
-          options={{ title: 'Observation Details' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>AI Forester App</Text>
+      <Text style={styles.subtitle}>Test Version</Text>
+      
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={() => alert('Button pressed!')}
+      >
+        <Text style={styles.buttonText}>Press Me</Text>
+      </TouchableOpacity>
+      
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#2a9d8f',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: '#555',
+    textAlign: 'center',
+    marginBottom: 40,
+  },
+  button: {
+    backgroundColor: '#2a9d8f',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10,
+    width: 200,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '500',
+  },
+});
