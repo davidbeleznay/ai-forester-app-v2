@@ -1,7 +1,7 @@
 @echo off
-echo ==============================
+echo ===============================
 echo AI Forester App Troubleshooter
-echo ==============================
+echo ===============================
 echo.
 echo This script will help troubleshoot Expo startup issues
 echo.
@@ -15,13 +15,24 @@ if %ERRORLEVEL% NEQ 0 (
 )
 echo.
 
-echo 2. Clearing Metro cache...
+echo 2. Cleaning node_modules cache...
 rmdir /s /q node_modules\.cache 2>nul
+echo Cache cleared
+echo.
+
+echo 3. Cleaning Expo cache...
+rmdir /s /q %USERPROFILE%\.expo 2>nul
+echo Expo cache cleared
+echo.
+
+echo 4. Cleaning Metro bundler cache...
+rmdir /s /q %TEMP%\metro-* 2>nul
+rmdir /s /q %TEMP%\haste-* 2>nul
 echo Metro cache cleared
 echo.
 
-echo 3. Starting Expo with tunnel and clear cache options...
-echo This will establish a secure connection through Expo's servers
+echo 5. Starting Expo with tunnel connection...
+echo This may take a moment to connect. Please be patient.
 echo.
 echo Press Ctrl+C to stop the server when done
 echo.
