@@ -15,10 +15,10 @@ AI Forester App allows field researchers to create and manage forest observation
 ## Getting Started
 
 ### Prerequisites
-- Node.js
+- Node.js (v16 or v18 recommended)
 - npm or yarn
 - Expo CLI
-- Expo Go app on your mobile device
+- Expo Go app on your mobile device (compatible with SDK 47)
 
 ### Installation
 1. Clone the repository
@@ -32,27 +32,27 @@ cd ai-forester-app-v2
 npm install
 ```
 
-3. Start the development server
+3. Start the development server with the troubleshooting script
 ```bash
-npx expo start
+.\start.bat
 ```
+This script clears caches and starts Expo with tunnel mode for better connectivity.
 
-4. If you encounter issues, start with a clean cache
-```bash
-npx expo start --clear
-```
+### Version Compatibility
+This app uses Expo SDK 47, which requires a compatible version of Expo Go. If you encounter compatibility issues:
 
-5. Scan the QR code with the Expo Go app on your mobile device
+1. Check your Expo Go app version - it should support SDK 47
+2. You can check compatibility at: https://docs.expo.dev/workflow/expo-go/
+3. Consider downgrading/upgrading Expo Go to match SDK 47
 
 ### Troubleshooting
-If you get an error about "Failed to parse manifest" or other Expo compatibility issues:
+If you encounter issues:
 
-1. Make sure you have the latest version of Expo Go installed on your device
-2. Try running with the clear cache option:
-```bash
-npx expo start --clear
-```
-3. Verify your Expo Go app version is compatible with SDK 49
+1. Make sure you're running the app using `.\start.bat` which includes necessary cleanup
+2. Try clearing npm cache: `npm cache clean --force`
+3. Make sure you have a stable internet connection
+4. If using Metro on port 8081 fails, try: `npx expo start --port 8082`
+5. On corporate networks, try connecting via mobile hotspot instead
 
 ## Project Structure
 ```
@@ -68,10 +68,12 @@ ai-forester-app/
 ```
 
 ## Changelog
-- 2025-04-30: Update Expo SDK for better compatibility
-  - Updated to Expo SDK 49
-  - Fixed manifest parsing issues
-  - Updated dependencies to match SDK version
+- 2025-04-30: Fix Expo SDK compatibility issues
+  - Set SDK version to 47 to match Expo Go compatibility
+  - Added improved troubleshooting script
+  - Simplified Metro configuration
+  - Fixed dependency versions
+
 - 2025-04-30: Initial project setup with dynamic form system
   - Created basic project structure with React Native and Expo
   - Implemented navigation between screens
